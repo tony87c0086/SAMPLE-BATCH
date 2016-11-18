@@ -18,48 +18,48 @@ import org.springframework.stereotype.Repository;
 import com.uknowho.sample.batch.config.Configuration;
 import com.uknowho.sample.batch.constant.ErrorCodeConstant;
 import com.uknowho.sample.batch.constant.ErrorMessageConstant;
-import com.uknowho.sample.batch.dao.CatalogueDao;
-import com.uknowho.sample.batch.entity.Catalogue;
+import com.uknowho.sample.batch.dao.TemplateDao;
+import com.uknowho.sample.batch.entity.Template;
 import com.uknowho.sample.batch.xmlmodel.PaginationModel;
 import com.uknowho.sample.batch.xmlmodel.SortModel;
 import com.uknowho.sample.rest.exception.ServiceException;
 import com.uknowho.sample.rest.utility.DataFormat;
 
 /**
- * This CatalogueDaoHibernate class implements the CatalogueDao interface.
+ * This TemplateDaoHibernate class implements the TemplateDao interface.
  * 
- * Created date <08-Sep-2016>
+ * Created date <19-Nov-2016>
  * 	
  * @version 1.0.1
  * @since 1.0.1
  * 
  * @author <a href="mailto:tony87c0086@hotmail.com"> Xiaoyu Zhang (Tony) </a>
  * 
- * @param <Catalogue> a Catalogue Entity object 
- * @param <Integer> the primary key of the Catalogue
+ * @param <Template> a Template Entity object 
+ * @param <Integer> the primary key of the Template
  *
  */
 
-@Repository("catalogueDao")
-public class CatalogueDaoHibernate 
-	extends GenericDaoHibernate<Catalogue, Integer> implements CatalogueDao {
+@Repository("templateDao")
+public class TemplateDaoHibernate 
+	extends GenericDaoHibernate<Template, Integer> implements TemplateDao {
 
-	private static final Logger logger = LoggerFactory.getLogger(Catalogue.class);
+	private static final Logger logger = LoggerFactory.getLogger(Template.class);
 	
-	public CatalogueDaoHibernate() {
-		super(Catalogue.class);
+	public TemplateDaoHibernate() {
+		super(Template.class);
 	}	
 	
 	@Override
-	public List<Catalogue> list() {
+	public List<Template> list() {
 		return listWithCriteria(null, null, null);
 	}
 
 	@Override
-	public Catalogue get(Integer ID) {
-		Catalogue object = null;
-		List<Catalogue> objectList = listWithCriteria(Restrictions.
-				eq("catalogueID", ID), null, null);
+	public Template get(Integer ID) {
+		Template object = null;
+		List<Template> objectList = listWithCriteria(Restrictions.
+				eq("templateID", ID), null, null);
 		if ((objectList != null) && (objectList.size()>0)) {
 			object = objectList.get(0);
 		}
@@ -67,7 +67,7 @@ public class CatalogueDaoHibernate
 	}
 	
 	@Override
-	public Catalogue save(Catalogue object) throws ServiceException {
+	public Template save(Template object) throws ServiceException {
 		try {
 			
 			getSession().saveOrUpdate(object);
@@ -76,17 +76,17 @@ public class CatalogueDaoHibernate
 			logger.error(ex.getMessage());
 			throw new ServiceException(ErrorCodeConstant.CONSTRAINT_FAILURE, 
 					ErrorMessageConstant.CONSTRAINT_FAILURE
-							+ object.getCatalogueID());
+							+ object.getTemplateID());
 		} catch (HibernateException ex) {
 			logger.error(ex.getMessage());
 			throw new ServiceException(ErrorCodeConstant.RECORD_SAVE_FAILURE, 
-					"Error while saving Catalogue details");
+					"Error while saving Template details");
 		} 
 		return object;
 	}
 	
 	@Override
-	public Catalogue update(Catalogue object) throws ServiceException {
+	public Template update(Template object) throws ServiceException {
 		try {
 			
 			getSession().update(object);
@@ -95,17 +95,17 @@ public class CatalogueDaoHibernate
 			logger.error(ex.getMessage());
 			throw new ServiceException(ErrorCodeConstant.CONSTRAINT_FAILURE, 
 					ErrorMessageConstant.CONSTRAINT_FAILURE
-							+ object.getCatalogueID());
+							+ object.getTemplateID());
 		} catch (HibernateException ex) {
 			logger.error(ex.getMessage());
 			throw new ServiceException(ErrorCodeConstant.RECORD_UPDATE_FAILURE, 
-					"Error while updating Catalogue details");
+					"Error while updating Template details");
 		} 
 		return object;
 	}
 
 	@Override
-	public Catalogue merge(Catalogue object) {
+	public Template merge(Template object) {
 		try {
 			
 			getSession().merge(object);
@@ -114,22 +114,22 @@ public class CatalogueDaoHibernate
 			logger.error(ex.getMessage());
 			throw new ServiceException(ErrorCodeConstant.CONSTRAINT_FAILURE, 
 					ErrorMessageConstant.CONSTRAINT_FAILURE
-							+ object.getCatalogueID());
+							+ object.getTemplateID());
 		} catch (HibernateException ex) {
 			logger.error(ex.getMessage());
 			throw new ServiceException(ErrorCodeConstant.RECORD_MERGE_FAILURE, 
-					"Error while merging Catalogue details");
+					"Error while merging Template details");
 		} 
 		return object;
 	}
 
 	@SuppressWarnings("unchecked")
-	private List<Catalogue> listWithCriteria(Criterion restrictions,
+	private List<Template> listWithCriteria(Criterion restrictions,
 			List<SortModel> sortList, 
 			PaginationModel pagination) {
-		List<Catalogue> objectList = new ArrayList<Catalogue>();
+		List<Template> objectList = new ArrayList<Template>();
 		try {
-			Criteria criteria =  getSession().createCriteria(Catalogue.class);
+			Criteria criteria =  getSession().createCriteria(Template.class);
 			
 			// Sort order
 			if (DataFormat.isListValid(sortList)) {
@@ -143,7 +143,7 @@ public class CatalogueDaoHibernate
 					}
 				}
 			} else {
-				criteria.addOrder(Order.asc("groupID")).addOrder(Order.asc("sortOrder"));
+				criteria.addOrder(Order.asc("templateName"));
 			}
 			
 			// Limit result
@@ -162,8 +162,8 @@ public class CatalogueDaoHibernate
 			
 			if ((objectList == null) || (objectList.isEmpty())) {
 				logger.warn(ErrorMessageConstant.RECORD_NOT_FOUND
-							+ "Catalogue.");
-				objectList = new ArrayList<Catalogue>();
+							+ "Template.");
+				objectList = new ArrayList<Template>();
 			}
 		} catch (HibernateException e) {
 			logger.error(e.getMessage());
@@ -178,32 +178,16 @@ public class CatalogueDaoHibernate
 	}
 	
 	@Override
-	public List<Catalogue> list(
-			Integer parentID,
-			Integer typeID, 
-			Integer groupID, 
-			Boolean active) throws ServiceException {
-		return list(parentID, typeID, groupID, active, null, null);
+	public List<Template> list(Boolean active) throws ServiceException {
+		return list(active, null, null);
 	}
 
 	@Override
-	public List<Catalogue> list(
-			Integer parentID,
-			Integer typeID, 
-			Integer groupID, 
+	public List<Template> list(
 			Boolean active, 
 			List<SortModel> sortList, 
 			PaginationModel pagination) throws ServiceException {
 		Map<String, Object> resMap = new HashMap<String, Object>();
-		if (parentID != null) {
-			resMap.put("parentID", parentID);
-		}
-		if (typeID != null) {
-			resMap.put("typeID", typeID);
-		}
-		if (groupID != null) {
-			resMap.put("groupID", groupID);
-		}
 		if (active != null) {
 			resMap.put("active", active);
 		}
