@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+						xmlns:sample="http://www.uknowho.com/xmlmodel/notification"
+						elementFormDefault="qualified"
+						targetNamespace="http://www.uknowho.com/xmlmodel/notification">
+	
+	
+	<xs:complexType name="templateModel">
+    	<xs:sequence>
+    		<xs:element name="templateName" type="xs:string" nillable="true"/>
+			<xs:element name="createdDate" type="xs:string" minOccurs="0"/>
+			<xs:element name="active" type="xs:boolean"/>
+    	</xs:sequence>
+    	<xs:attribute name="templateID" type="xs:int"/>	
+  	</xs:complexType>
+	
+  	<xs:complexType name="notificationEmailModel">
+    	<xs:sequence>
+    		<xs:element name="templateID" type="xs:int" minOccurs="0"/>
+    		<xs:element name="fromEmail" type="xs:string" nillable="true"/>
+    		<xs:element name="toEmail" type="xs:string" nillable="true"/>
+    		<xs:element name="subject" type="xs:string" nillable="true"/>
+    		<xs:element name="content" type="xs:string" nillable="true"/>
+			<xs:element name="createdDate" type="xs:string" minOccurs="0"/>
+			<xs:element name="active" type="xs:boolean"/>
+			
+			<xs:element name="template" type="sample:templateModel" minOccurs="1"/>
+    	</xs:sequence>
+    	<xs:attribute name="notificationEmailID" type="xs:int"/>	
+  	</xs:complexType>
+  	
+  	<xs:complexType name="sortModel">
+    	<xs:sequence>
+			<xs:element name="descend" type="xs:boolean" default="true"/>
+			<xs:element name="field" type="xs:string"/>
+    	</xs:sequence>
+  	</xs:complexType>
+  	
+  	<xs:complexType name="paginationModel">
+    	<xs:sequence>
+			<xs:element name="startPage" type="xs:int" default="1"/>
+			<xs:element name="perPage" type="xs:int" default="25"/>
+			<xs:element name="firstResult" type="xs:int" default="0"/>
+			<xs:element name="maxResult" type="xs:int" default="200"/>
+    	</xs:sequence>
+  	</xs:complexType>
+  	
+</xs:schema>

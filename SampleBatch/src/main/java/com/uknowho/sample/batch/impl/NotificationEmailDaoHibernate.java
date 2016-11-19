@@ -20,10 +20,10 @@ import com.uknowho.sample.batch.constant.ErrorCodeConstant;
 import com.uknowho.sample.batch.constant.ErrorMessageConstant;
 import com.uknowho.sample.batch.dao.NotificationEmailDao;
 import com.uknowho.sample.batch.entity.NotificationEmail;
+import com.uknowho.sample.batch.exception.ServiceException;
+import com.uknowho.sample.batch.utility.DataFormat;
 import com.uknowho.sample.batch.xmlmodel.PaginationModel;
 import com.uknowho.sample.batch.xmlmodel.SortModel;
-import com.uknowho.sample.rest.exception.ServiceException;
-import com.uknowho.sample.rest.utility.DataFormat;
 
 /**
  * This NotificationEmailDaoHibernate class implements the NotificationEmailDao interface.

@@ -50,48 +50,16 @@ public class ErrorMessageConstant {
 	public static final String MODEL_MAPPING_EXCEPTION = "Error while mapping object(s).";
 	
 	// Business logic error message constants
-	public static final String CATALOGUE_NOT_FOUND = 
-			"Catalogue is not found from database for further processing request.";
-	public static final String CATALOGUE_MODEL_NOT_FOUND = 
-			"Catalogue model is not found for further processing request.";
+	public static final String TEMPLATE_NOT_FOUND = 
+			"Template is not found from database for further processing request.";
+	public static final String TEMPLATE_MODEL_NOT_FOUND = 
+			"Template model is not found for further processing request.";
+	
+	public static final String NOTIFICATION_EMAIL_NOT_FOUND = 
+			"Notification email is not found from database for further processing request.";
+	public static final String NOTIFICATION_EMAIL_MODEL_NOT_FOUND = 
+			"Notification email model is not found for further processing request.";
 
-	// Service error message constants
-	public static final String CATALOGUE_SERVICE_ID_NOT_FOUND = 
-			"Sorry, Catalogue ID could not be empty for further processing request.";
-	
-	public static final String WEB_SERVICE_EXCEPTION = 
-			"Error while processing web service request.";
-	
-	// API exception error message constants 
-	public static final String BAD_REQUEST = "Request body or variable is missing...";
-	public static final String SERVICE_UNAVAILABLE = "Service not available...";
-	public static final String NOT_FOUND = "Resource not found...";
-	public static final String METHOD_NOT_ALLOWED = "Request method not allowed...";
-	public static final String NOT_ACCEPTABLE = "Media type not acceptable...";
-	public static final String UNSUPPORTED_MEDIA_TYPE = 
-			"Media type not supportable. Try JSON content-type instead.";
-	
-	// API exception error message constants 
-	public static final String AUTHENTICATION_USERNAME_PATTERN = 
-			"Sorry, username could not be null or empty "
-			+ "or contain any special characters, "
-			+ "please check before processing.";
-	
-	public static final String AUTHENTICATION_USER_NOT_FOUND = 
-			"Sorry, user not found according to passing authentication username, "
-			+ "please check before processing.";
-	
-	public static final String AUTHENTICATION_USER_PASSWORD_MISMATCH = 
-			"Sorry, username and password are not match, "
-			+ "please check before processing.";
-	
-	public static final String AUTHENTICATION_ACTIVE_RATE_NOT_FOUND = 
-			"Active request rate running out for the user, "
-        	 	+ "please wait for next server reset time.";
-	
-	public static final String AUTHENTICATION_ACTIVE_ATTEMP_NOT_FOUND = 
-			"Too much invalid attemps, Please wait for next server reset time.";
-	
 	// Normal exception error message constants 
 	public static final String UNKNOWN_EXCEPTION = "Unknown error while processing request.";
 	

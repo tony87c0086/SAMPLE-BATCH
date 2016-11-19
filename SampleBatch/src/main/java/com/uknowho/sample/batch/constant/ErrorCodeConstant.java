@@ -59,8 +59,11 @@ public class ErrorCodeConstant {
 	public static final int MODEL_MAPPING_EXCEPTION = 30009;
 	
 	// Business logic error code constants
-	public static final int CATALOGUE_NOT_FOUND = 40001;
-	public static final int CATALOGUE_MODEL_NOT_FOUND = 40002;
+	public static final int TEMPLATE_NOT_FOUND = 40001;
+	public static final int TEMPLATE_MODEL_NOT_FOUND = 40002;
+	
+	public static final int NOTIFICATION_EMAIL_NOT_FOUND = 40001;
+	public static final int NOTIFICATION_EMAIL_MODEL_NOT_FOUND = 40002;
 	
 	// Service error code constants
 	public static final int CATALOGUE_SERVICE_ID_NOT_FOUND = 50001;

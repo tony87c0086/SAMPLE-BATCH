@@ -10,8 +10,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.uknowho.sample.batch.constant.EnumConstant.FrequencyType;
-import com.uknowho.sample.rest.utility.DataFormat;
-import com.uknowho.sample.rest.utility.DateAdapter;
+import com.uknowho.sample.batch.utility.DataFormat;
+import com.uknowho.sample.batch.utility.DateAdapter;
 
 import junit.framework.TestCase;
 

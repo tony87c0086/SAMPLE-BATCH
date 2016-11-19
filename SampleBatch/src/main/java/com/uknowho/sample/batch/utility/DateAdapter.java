@@ -1,4 +1,4 @@
-package com.uknowho.sample.rest.utility;
+package com.uknowho.sample.batch.utility;
 
 import java.text.DateFormat;
 import java.text.ParseException;

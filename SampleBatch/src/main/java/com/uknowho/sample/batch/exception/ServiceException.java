@@ -1,4 +1,4 @@
-package com.uknowho.sample.rest.exception;
+package com.uknowho.sample.batch.exception;
 
 import com.uknowho.sample.batch.constant.ErrorCodeConstant;
 
