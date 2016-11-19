@@ -34,9 +34,12 @@
 	</bean>
 	
 	<!-- Bean definition for Springframework Transaction Manager -->
-	<bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+	<bean id="daoTransactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
+	
+	<!-- Bean definition for Spring Batch Transaction Manager -->
+	<bean id="batchTransactionManager" class="org.springframework.batch.support.transaction.ResourcelessTransactionManager"/>
 	
 	<!--  Activates scannning for @Autowired -->
 	<context:annotation-config />

@@ -2,13 +2,22 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:batch="http://www.springframework.org/schema/batch"
+	xmlns:task="http://www.springframework.org/schema/task"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans 
 	http://www.springframework.org/schema/beans/spring-beans.xsd 
 	http://www.springframework.org/schema/context 
-	http://www.springframework.org/schema/context/spring-context.xsd">
+	http://www.springframework.org/schema/context/spring-context.xsd
+	http://www.springframework.org/schema/batch
+	http://www.springframework.org/schema/batch/spring-batch.xsd
+	http://www.springframework.org/schema/task
+	http://www.springframework.org/schema/task/spring-task.xsd">
 
  	<!-- Activates scanning of @Autowired -->
     <context:annotation-config/>
+    
+    <context:property-placeholder location="classpath:email.properties" order="1" ignore-unresolvable="true"/>
+  	<context:property-placeholder location="classpath:dal.properties" order="2" ignore-unresolvable="true"/>
     
     <!-- Activates scanning of @Repository, @Service and @Component-->
     <!-- Not including @Transactional, DAO need to be init in HibernateContent -->
@@ -17,5 +26,47 @@
 	</context:component-scan>
      
     <!-- Custom Bean Definition -->
+   <!--  
+    <bean id="marshaller" class="org.springframework.oxm.jaxb.Jaxb2Marshaller">
+    	<property name="contextPath" value="com.uknowho.sample.batch.xmlmodel"></property>
+    </bean>
+     -->
+     
+    <!-- Batch Job & Task Definition -->
+    <batch:job-repository id="jobRepository" transaction-manager="batchTransactionManager"/>
+    <bean id="jobLauncher" class="org.springframework.batch.core.launch.support.SimpleJobLauncher">
+    	<property name="jobRepository" ref="jobRepository"></property>
+    </bean>
     
+    <batch:job id="notificationEmail">
+    	<batch:step id="emailSender">
+    		<batch:tasklet ref="notificationEmailSender" transaction-manager="batchTransactionManager"></batch:tasklet>
+    	</batch:step>
+    </batch:job>
+    
+    <task:scheduler id="scheduledTask" pool-size="1"/>
+    <task:scheduled-tasks scheduler="scheduledTask">
+    	<task:scheduled ref="notificationEmailLauncher" method="run" cron="0 0/1 * * * ?"/>
+    </task:scheduled-tasks>
+    
+    <!--  Set up default SMTP Sender properties -->
+   	<bean id="javaMailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+   		<property name="host" value="${email.host}" />
+   		<property name="port" value="${email.port}" />
+   		<property name="username" value="${email.username}" />
+   		<property name="password" value="${email.password}" />
+   		<property name="javaMailProperties">
+   			<props>
+   				<prop key="mail.transport.protocol">${email.transport.protocol}</prop>
+   				<prop key="mail.smtp.auth">true</prop>
+   				<prop key="mail.smtp.starttls.enable">true</prop>
+   				<prop key="mail.debug">false</prop>
+   			</props>
+   		</property>
+   	</bean>
+   	
+   	<bean id="simpleMailMessage" class="org.springframework.mail.SimpleMailMessage" scope="prototype">
+   		<property name="subject" value="Subscribe: Sample Email"></property>
+   	</bean>
+   	
 </beans>

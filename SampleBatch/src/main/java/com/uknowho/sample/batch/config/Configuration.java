@@ -24,15 +24,6 @@ public class Configuration extends PropertyPlaceholderConfigurer {
 	public static final int MIN_DEFAULT_RETURN_RECORD = 0;
 	public static final int MAX_DEFAULT_RETURN_RECORD = 50;
 	
-	// Service code setting
-	public static final int CATALOGUE_SERVICE_CODE = 10;
-	
-	// API security setting
-	public static final String SESSION_TOKEN_KEY = "sessionkey";
-	public static final String SECURITY_TOKEN_KEY = "securitykey";
-	
-	public static final int DEFAULT_API_TIMEOUT_HOUR = 1;
-
 	// Utility setting
 	public static final double FILE_SIZE_CURRENCY = 1024;
 	public static final String MEGABYTE_UNIT = "MB";
@@ -41,15 +32,10 @@ public class Configuration extends PropertyPlaceholderConfigurer {
 	public static final String TIME_FORMAT_STRING = "HH:mm:ss";
 	public static final String DATETIME_FORMAT_STRING = "yyyy-MM-dd HH:mm:ss";
 	
-	public static final String SORT_DESCEND_PREFIX = "-";
-	public static final int SORT_ASC_FIELD_INDEX = 0;
-	public static final int SORT_DESCEND_FIELD_INDEX = 1;
-	
 	// Pattern matching
 	public static final String EMAIL_WITHOUT_NULL = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)"
 			+ "*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
 	
-	public static final String PASSWORD_PATTERN = "^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$";
 	public static final String STRING_VALID_PATTERN = "^[A-Za-z0-9 _-]*$";
 	
 	// XML model with header changes

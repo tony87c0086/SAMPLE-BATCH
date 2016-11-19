@@ -65,11 +65,6 @@ public class ErrorCodeConstant {
 	public static final int NOTIFICATION_EMAIL_NOT_FOUND = 40001;
 	public static final int NOTIFICATION_EMAIL_MODEL_NOT_FOUND = 40002;
 	
-	// Service error code constants
-	public static final int CATALOGUE_SERVICE_ID_NOT_FOUND = 50001;
-	
-	public static final int WEB_SERVICE_EXCEPTION = 50999;
-	
 	// API exception error code constants 
 	
 	// Normal exception error code constants 

@@ -17,10 +17,10 @@
     <!-- AOP: Configuration and Aspects                                      -->
     <!-- =================================================================== -->
 	<!-- Configuration for enabling Declarative Transaction Management -->
-	<!--  Note that transactionManager bean is already defined in applicationHibernateContext.xml -->
+	<!--  Note that daoTransactionManager bean is already defined in applicationHibernateContext.xml -->
 	
 	<!--  Configure transaction advice -->
-	<tx:advice id="txSaveAdvice" transaction-manager="transactionManager" >
+	<tx:advice id="txSaveAdvice" transaction-manager="daoTransactionManager" >
 		<!-- all methods starting with save are create/update methods, so read-only set to false --> 
 		<tx:attributes>
 			<tx:method name="save*" read-only="false" />
@@ -30,7 +30,7 @@
 		</tx:attributes>
 	</tx:advice>
 	
-	<tx:advice id="txDefaultAdvice" transaction-manager="transactionManager" >
+	<tx:advice id="txDefaultAdvice" transaction-manager="daoTransactionManager" >
 		<!-- all methods starting with get are readonly, so runs within readonly transaction  --> 
 		<tx:attributes>
 			<tx:method name="get*" read-only="true"/>

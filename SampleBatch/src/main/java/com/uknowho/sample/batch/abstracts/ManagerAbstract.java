@@ -30,7 +30,6 @@ public abstract class ManagerAbstract {
 
 	private static final Logger logger = LoggerFactory.getLogger(ManagerAbstract.class);
 	
-	
 	protected ManagerAbstract() {
 		//	logger.info("ManagerAbstract construction method load.");
 	}
