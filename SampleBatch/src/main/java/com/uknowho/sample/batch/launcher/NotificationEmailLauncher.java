@@ -10,6 +10,19 @@ import org.springframework.batch.core.launch.JobLauncher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+/**
+ * This NotificationEmailLauncher class implements Batch Launcher for sending email.
+ * 
+ * Created date <19-Nov-2016>
+ * 
+ * @version 1.0.1
+ * @since 1.0.1
+ * 
+ * @author <a href="mailto:tony87c0086@hotmail.com"> Xiaoyu Zhang (Tony) </a>
+ * 
+ */
+
+
 @Component
 public class NotificationEmailLauncher {
 

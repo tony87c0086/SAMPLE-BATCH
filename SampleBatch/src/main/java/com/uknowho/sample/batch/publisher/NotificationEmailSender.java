@@ -16,6 +16,18 @@ import com.uknowho.sample.batch.service.SMTPMailerService;
 import com.uknowho.sample.batch.utility.DataFormat;
 import com.uknowho.sample.batch.xmlmodel.NotificationEmailModel;
 
+/**
+ * This NotificationEmailSender class implements Batch for send email.
+ * 
+ * Created date <19-Nov-2016>
+ * 
+ * @version 1.0.1
+ * @since 1.0.1
+ * 
+ * @author <a href="mailto:tony87c0086@hotmail.com"> Xiaoyu Zhang (Tony) </a>
+ * 
+ */
+
 @Service
 public class NotificationEmailSender implements Tasklet {
 
